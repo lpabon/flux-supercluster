@@ -1,0 +1,1 @@
+kubectl pxc app install --name mysql-test -n test2 --package local/vitess --args shardCount=2,shardReplicas=3

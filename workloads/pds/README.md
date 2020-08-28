@@ -1,0 +1,1 @@
+kubectl pxc pds install
