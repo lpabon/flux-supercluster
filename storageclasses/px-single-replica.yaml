@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: px-single-replica
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+parameters:
+  repl: "1"
+provisioner: kubernetes.io/portworx-volume
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
