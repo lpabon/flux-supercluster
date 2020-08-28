@@ -1,0 +1,24 @@
+# SOURCE: https://install.portworx.com/?operator=true&csi=false&c=portworx
+kind: StorageCluster
+apiVersion: core.libopenstorage.org/v1alpha1
+metadata:
+  name: portworx
+  namespace: kube-system
+  annotations:
+    portworx.io/install-source: "https://install.portworx.com/?operator=true&csi=false&c=portworx"
+spec:
+  image: portworx/oci-monitor:2.5.7
+  imagePullPolicy: Always
+  storage:
+    useAll: true
+  stork:
+    enabled: true
+    image: openstorage/stork:2.4.4
+  autopilot:
+    enabled: true
+    image: portworx/autopilot:1.2.1
+    providers:
+    - name: default
+      type: prometheus
+      params:
+        url: http://prometheus:9090
